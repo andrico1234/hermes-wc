@@ -1,0 +1,47 @@
+:root {
+  --hermes-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+  --hermes-font-step--2: clamp(0.7813rem, 0.7747rem + 0.0326vw, 0.8rem);
+  --hermes-font-step--1: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
+  --hermes-font-step-0: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+
+  --hermes-wrapper-font-family: var(--hermes-font-family);
+  --hermes-wrapper-font-size: var(--hermes-font-step-0);
+  --hermes-wrapper-form-min-width: 300px;
+
+  --hermes-score-input-helper-text-font-size: var(--hermes-font-step--2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.hermes-row {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.hermes-row > * {
+  width: 100%;
+}
+
+.hermes-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+sl-input::part(input) {
+  font-size: var(--hermes-font-step--1);
+}
+
+hermes-wrapper > form {
+  border: 1px solid var(--sl-color-blue-300);
+  padding: 8px;
+  border-radius: 2px;
+  min-width: var(--hermes-wrapper-form-min-width);
+  background: var(--sl-color-neutral-0);
+  box-shadow: var(--sl-shadow-small);
+}

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <link rel="stylesheet" href="./node_modules/@shoelace-style/shoelace/dist/themes/dark.css" />
+  <title>Vite App</title>
+</head>
+
+<body>
+  <main class="container">
+    <h1>Hermes WC Example</h1>
+    <blockquote>Because user feedback should be treated like a gift from the gods.</blockquote>
+
+    <h2>Getting Started</h2>
+    <p>Install using:</p>
+    <code>npm i hermes-wc</code>
+    <p>or use a CDN:</p>
+    <code>...</code>
+
+    <p>In your HTML add the following code:</p>
+    <code>
+      <pre>
+        
+      </pre>
+    </code>
+
+    <p>
+      In your JavaScript import the initial
+    </p>
+
+    <h2>Components</h2>
+
+    <h3>Hermes Wrapper</h3>
+    <p>Description</p>
+
+    <h3>Hermes Input</h3>
+    <p>Description</p>
+
+    <h3>Hermes Submit Button</h3>
+    <p>Description</p>
+
+    <h3>Hermes Close Button</h3>
+    <p>Description</p>
+
+    <hermes-wrapper>
+      <form class="hermes-stack" data-hermes="form">
+        <sl-input name="feedback" required label="Feedback" placeholder="e.g., Not clear enough"></sl-input>
+        <hermes-score-input name="score" required label="Score" score-count="5" start-helper-text="Low Score"
+          end-helper-text="High score"></hermes-score-input>
+        <div class="hermes-row">
+          <sl-button data-hermes="close">Close</sl-button>
+          <sl-button variant="primary" type="submit">Submit</sl-button>
+        </div>
+      </form>
+    </hermes-wrapper>
+  </main>
+
+  <script type="module">
+    import '../src/style.css';
+    import { initializeHermesForm } from '../src/index.js'
+
+    initializeHermesForm()
+  </script>
+</body>
+
+</html>
+
+<!-- Think about how people can handle this without writing web components outside of the wrapper component -->
