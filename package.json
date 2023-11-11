@@ -10,7 +10,7 @@
     "delete-types": "rimraf **/*.ts src/**/*.ts",
     "create-types": "tsc",
     "generate-types": "npm run delete-types && npm run create-types",
-    "release": "generate-types && np"
+    "release": "npm run generate-types && np"
   },
   "files": [
     "src"
