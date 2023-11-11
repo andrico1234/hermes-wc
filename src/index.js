@@ -7,7 +7,7 @@ import '../src/score-input/hermes-score-input.js';
 
 /**
  * @callback SubmissionCompleteCallback
- * @param {Array.<PromiseSettledResult>} results
+ * @param {Array.<PromiseSettledResult<any>>} results
  */
 
 

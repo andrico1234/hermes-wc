@@ -20,7 +20,7 @@ export class DiscordSubmissionAdapter extends SubmissionAdapter {
 
   /**
    * 
-   * @param {object} formData 
+   * @param {Record<string, unknown>} formData 
    * @returns {Promise<{success: boolean, error?: string}>}
    */
   async submit(formData) {

@@ -6,7 +6,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite ./docs",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "delete-types": "rimraf **/*.ts src/**/*.ts",
+    "create-types": "tsc",
+    "generate-types": "npm run delete-types && npm run create-types",
+    "publish": "generate-types && np"
   },
   "files": [
     "src"
@@ -20,6 +24,9 @@
   },
   "devDependencies": {
     "eslint": "^8.53.0",
+    "np": "^8.0.4",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.2.2",
     "vite": "^4.5.0"
   }
 }
