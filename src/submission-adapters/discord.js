@@ -1,4 +1,4 @@
-import { SubmissionAdapter } from "./base";
+import { SubmissionAdapter } from "./base.js";
 
 /**
  * DiscordSubmissionAdapter
