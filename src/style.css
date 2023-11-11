@@ -7,13 +7,20 @@
 
   --hermes-wrapper-font-family: var(--hermes-font-family);
   --hermes-wrapper-font-size: var(--hermes-font-step-0);
-  --hermes-wrapper-form-min-width: 300px;
+  --hermes-wrapper-form-width: 300px;
 
   --hermes-score-input-helper-text-font-size: var(--hermes-font-step--2);
 }
 
-* {
-  box-sizing: border-box;
+hermes-wrapper {
+  transition: 1s opacity;
+  opacity: 0;
+  display: none;
+}
+
+.hermes-loaded {
+  opacity: 1;
+  display: block;
 }
 
 .hermes-row {
@@ -23,7 +30,7 @@
   justify-content: space-between;
 }
 
-.hermes-row > * {
+.hermes-row>* {
   width: 100%;
 }
 
@@ -33,15 +40,26 @@
   gap: 12px;
 }
 
+[data-hermes="helper-text"] {
+  font-size: var(--hermes-score-input-helper-text-font-size);
+  color: var(--sl-color-gray-500);
+  margin: 0;
+  margin-top: 4px;
+}
+
+[data-hermes="helper-text"]:empty {
+  display: none;
+}
+
 sl-input::part(input) {
   font-size: var(--hermes-font-step--1);
 }
 
-hermes-wrapper > form {
+hermes-wrapper>form {
   border: 1px solid var(--sl-color-blue-300);
   padding: 8px;
   border-radius: 2px;
-  min-width: var(--hermes-wrapper-form-min-width);
+  width: var(--hermes-wrapper-form-width);
   background: var(--sl-color-neutral-0);
   box-shadow: var(--sl-shadow-small);
 }

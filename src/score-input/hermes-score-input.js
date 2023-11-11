@@ -41,8 +41,7 @@ class HermesScoreInput extends LitElement {
     },
     endHelperText: {
       attribute: 'end-helper-text'
-    },
-    name: {}
+    }
   }
 
   constructor() {

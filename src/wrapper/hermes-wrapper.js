@@ -58,7 +58,7 @@ class HermesWrapper extends LitElement {
   `
 
   static properties = {
-    title: {},
+    label: {},
     isFormVisible: { type: Boolean }
   }
 
@@ -94,7 +94,7 @@ class HermesWrapper extends LitElement {
     }, () => {
       // Move this button to another component        
       return html`<sl-button variant="neutral" id="feedback-button" @click=${() => this.setFormVisibleState(!this.isFormVisible)}>
-          ${this.title ?? this.DEFAULT_TITLE}
+          ${this.label ?? this.DEFAULT_TITLE}
         </sl-button>`
     })}
     </div>
