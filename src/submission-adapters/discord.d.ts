@@ -15,4 +15,4 @@ export class DiscordSubmissionAdapter extends SubmissionAdapter {
     });
     webhookUrl: string;
 }
-import { SubmissionAdapter } from "./base";
+import { SubmissionAdapter } from "./base.js";
