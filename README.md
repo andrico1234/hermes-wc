@@ -132,7 +132,7 @@ interface SubmissionAdapter {
 
 ## Styling your Hermes WC form
 
-Hermes WC offers a few CSS variables you can override to style the form. You can view them [here]().
+Hermes WC offers a few CSS variables you can override to style the form. You can view them [here](https://github.com/andrico1234/hermes-wc/blob/main/src/style.css).
 
 Hermes also applies styles using Shoelace's CSS variables and parts, which you can also override. You can view
 the variables [here](https://github.com/shoelace-style/shoelace/blob/next/src/themes/light.css).
