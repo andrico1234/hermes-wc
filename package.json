@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite ./docs",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"no tests\"",
     "delete-types": "rimraf **/*.ts src/**/*.ts",
     "create-types": "tsc",
     "generate-types": "npm run delete-types && npm run create-types",
