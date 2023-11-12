@@ -11,8 +11,8 @@
   <title>Vite App</title>
   <style>
     .image-wrapper {
-      max-width: 350px;
-      margin-inline: auto;
+      width: 100%;
+      text-align: center;
     }
 
     .links {
@@ -34,6 +34,11 @@
     .bold {
       font-weight: bold;
     }
+
+    video {
+      width: 100%;
+      width: min(100%, 900px);
+    }
   </style>
   <script type="module" src="https://md-block.verou.me/md-block.js"></script>
 </head>
@@ -47,13 +52,17 @@
       <a href="https://component-odyssey.com/">Component Odyssey</a>
     </div>
     <blockquote>Because user feedback should be treated like a gift from the gods.</blockquote>
+
     <div class="image-wrapper">
-      <img src="hermes-demo.gif" alt="Hermes demo" />
+      <video controls autoplay loop>
+        <source src="hermes.mp4" type="video/mp4" />
+      </video>
     </div>
+
     <h2 id="what-is-hermes-wc-">What is Hermes WC?</h2>
     <p>Hermes WC lets you add a simple feedback widget to any web page.</p>
     <p>With Hermes WC you can plug in &quot;submission adapters&quot; to send your feedback wherever you want. We offer
-      an adapter for Discord, but we&#39;ll be adding more in the future. Please let us know what kind of adapters would
+      an adapter for Discord, Slack, and HTTP Get endpoints. Please let us know what kind of adapters would
       be most useful for you!</p>
     <h2 id="getting-started">Getting Started</h2>
     <p>To get started using Hermes WC, install the package in your project:</p>
@@ -192,7 +201,6 @@ cleanup()
 
   <script type="module">
     import '../src/style.css';
-    import { DiscordSubmissionAdapter } from '../src/submission-adapters/discord.js'
     import { initializeHermesForm } from '../src/index.js'
 
     initializeHermesForm({

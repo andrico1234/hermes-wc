@@ -2,13 +2,15 @@
 
 > Because user feedback should be treated like a gift from the gods.
 
-<img width="300" src="./docs/public/hermes-demo.gif" />
+<video style="width: min(100%, 700px)" controls autoplay loop>
+  <source  src="./docs/public/hermes.mp4" type="video/mp4" />
+</video>
 
 ## What is Hermes WC?
 
 Hermes WC lets you add a simple feedback widget to any web page.
 
-With Hermes WC you can plug in "submission adapters" to send your feedback wherever you want. We offer an adapter for Discord, but we'll be adding more in the future. Please let us know what kind of adapters would be most useful for you!
+With Hermes WC you can plug in "submission adapters" to send your feedback wherever you want. We offer an adapter for Discord, Slack, and HTTP Get endpoints. Please let us know what kind of adapters would be most useful for you!
 
 ## Getting Started
 
