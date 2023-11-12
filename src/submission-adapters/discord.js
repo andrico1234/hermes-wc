@@ -41,10 +41,10 @@ Current page: ${window.location.href}
       }
     });
 
-    if (response.status < 400 && !content.includes('booboo')) {
+    if (response.ok) {
       return { success: true };
-    } else {
-      return { success: false, error: response.message };
     }
+
+    return { success: false, error: response.message };
   }
 }

@@ -1,6 +1,6 @@
 # Hermes WC
 
-Because user feedback should be treated like a gift from the gods.
+> Because user feedback should be treated like a gift from the gods.
 
 <img width="300" src="./docs/public/hermes-demo.gif" />
 
@@ -79,11 +79,17 @@ By default, Hermes WC uses some [Shoelace](https://shoelace.style) web component
 
 Hermes WC also exports a hermes-score-input which is a convenience wrapper over Shoelace's radio button components.
 
-## Gotchas
+## Notes
 
 ### SSR
 
 When invoked, the `initializeHermesForm` function performs some DOM operations. As a result, it cannot run in a server-side rendered environment. If you are using a framework like Next.js, you can use the `useEffect` hook to run the function on the client side. If you're using Svelte, you can call `initializeHermesForm` in the `onMount` lifecycle hook.
+
+### Security
+
+Please note that the webhook URLs of the submission adapters are exposed to the client. Never pass through any sensitive information as arguments.
+
+If you'd like to send data to a private endpoint, you can create a custom submission adapter that sends the data to your endpoint. See the section on creating custom submission adapters for more information. You can then use one of our adapters directly from within your private server to send to your preferred destination.
 
 ## API
 
@@ -126,13 +132,29 @@ Posts the form data to a Discord webhook.
 
 **webhookUrl:** The URL of the Discord webhook to post to.
 
+#### Slack Submission Adapter
+
+Posts the form data to the Slack webhook.
+
+##### Args
+
+**webhookUrl:** The URL of the Slack webhook to post to.
+
+#### HTTP Get Submission Adapter
+
+Performs an HTTP GET request to the specified URL.
+
+##### Args
+
+**url:** The URL of the HTTP endpoint.
+
 #### Creating a custom submission adapter
 
 Submission adapters are just classes that implement the following interface:
 
 ```js
 interface SubmissionAdapter {
-  submit: (formData) => Promise<{success: boolean, error?: string}>;
+  submit: (formData) => Promise<{ success: boolean, error?: string }>;
 }
 ```
 

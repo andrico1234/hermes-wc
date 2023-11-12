@@ -35,140 +35,145 @@
       font-weight: bold;
     }
   </style>
+  <script type="module" src="https://md-block.verou.me/md-block.js"></script>
 </head>
 
 <body>
   <main class="container">
-    <h1>Hermes WC</h1>
+    <h1 id="hermes-wc">Hermes WC</h1>
     <div class="links">
       <a href="https://github.com/andrico1234/hermes-wc/tree/main">GitHub</a>
       <a href="https://twitter.com/AndricoKaroulla">X (Twitter)</a>
       <a href="https://component-odyssey.com/">Component Odyssey</a>
     </div>
     <blockquote>Because user feedback should be treated like a gift from the gods.</blockquote>
-
     <div class="image-wrapper">
       <img src="hermes-demo.gif" alt="Hermes demo" />
     </div>
-
-    <h2>What is Hermes WC?</h2>
-    <p>Hermes WC lets you add a simple feedback widget to any web page.
-    </p>
-    <p>With Hermes WC you can plug in "submission adapters" to send your feedback wherever you want. We
-      offer an adapter for Discord, but we'll be adding more in the future.
-      Please let us know what kind of adapters would be most useful for you!</p>
-
-    <h2>Getting Started</h2>
+    <h2 id="what-is-hermes-wc-">What is Hermes WC?</h2>
+    <p>Hermes WC lets you add a simple feedback widget to any web page.</p>
+    <p>With Hermes WC you can plug in &quot;submission adapters&quot; to send your feedback wherever you want. We offer
+      an adapter for Discord, but we&#39;ll be adding more in the future. Please let us know what kind of adapters would
+      be most useful for you!</p>
+    <h2 id="getting-started">Getting Started</h2>
     <p>To get started using Hermes WC, install the package in your project:</p>
-    <pre class="language-bash">npm install hermes-wc</pre>
+    <pre><code class="language-bash">npm <span>install</span> hermes-wc
+</code></pre>
     <p>In your HTML add the following code:</p>
-    <pre class="language-markup"><code>&lt;hermes-wrapper&gt;
-  &lt;form class=&quot;hermes-stack&quot; data-hermes=&quot;form&quot;&gt;
-    &lt;sl-input name=&quot;feedback&quot; label=&quot;Feedback&quot; placeholder=&quot;e.g., Not clear enough&quot;&gt;&lt;/sl-input&gt;
-    &lt;hermes-score-input name=&quot;score&quot; label=&quot;Score&quot; score-count=&quot;5&quot; start-helper-text=&quot;Low Score&quot;
-      end-helper-text=&quot;High score&quot;&gt;&lt;/hermes-score-input&gt;
-    &lt;div class=&quot;hermes-row&quot;&gt;
-      &lt;sl-button data-hermes=&quot;close&quot;&gt;Close&lt;/sl-button&gt;
-      &lt;sl-button variant=&quot;primary&quot; type=&quot;submit&quot;&gt;Submit&lt;/sl-button&gt;
+    <pre><code class="language-markup">&lt;hermes-wrapper&gt;
+  &lt;<span class="hljs-keyword">form</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">"hermes-stack"</span> data-hermes=<span class="hljs-string">"form"</span>&gt;
+    &lt;sl-<span class="hljs-keyword">input</span>
+      name=<span class="hljs-string">"feedback"</span>
+      <span class="hljs-keyword">label</span>=<span class="hljs-string">"Feedback"</span>
+      placeholder=<span class="hljs-string">"e.g., Not clear enough"</span>
+    &gt;&lt;/sl-<span class="hljs-keyword">input</span>&gt;
+    &lt;hermes-<span class="hljs-keyword">score</span>-<span class="hljs-keyword">input</span>
+      name=<span class="hljs-string">"score"</span>
+      <span class="hljs-keyword">label</span>=<span class="hljs-string">"Score"</span>
+      <span class="hljs-keyword">score</span>-<span class="hljs-keyword">count</span>=<span class="hljs-string">"5"</span>
+      start-helper-text=<span class="hljs-string">"Low Score"</span>
+      end-helper-text=<span class="hljs-string">"High score"</span>
+    &gt;&lt;/hermes-<span class="hljs-keyword">score</span>-<span class="hljs-keyword">input</span>&gt;
+    &lt;div <span class="hljs-keyword">class</span>=<span class="hljs-string">"hermes-row"</span>&gt;
+      &lt;sl-button data-hermes=<span class="hljs-string">"close"</span>&gt;<span class="hljs-keyword">Close</span>&lt;/sl-button&gt;
+      &lt;sl-button variant=<span class="hljs-string">"primary"</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">"submit"</span>&gt;Submit&lt;/sl-button&gt;
     &lt;/div&gt;
-  &lt;/form&gt;
-&lt;/hermes-wrapper&gt; </code></pre>
-
+  &lt;/<span class="hljs-keyword">form</span>&gt;
+&lt;/hermes-wrapper&gt;
+</code></pre>
     <p>This is the very same markup used to render the Hermes form used in this page.</p>
-    <p>
-      Next, include the following JavaScript in your page:
-    </p>
+    <p>Next, include the following JavaScript in your page:</p>
+    <pre><code class="language-javascript"><span>import</span> <span class="hljs-string">'hermes-wc/src/style.css'</span>;
+<span class="hljs-keyword">import</span> { DiscordSubmissionAdapter } <span class="hljs-keyword">from</span> <span class="hljs-string">'hermes-wc/src/submission-adapters/discord.js'</span>
+<span class="hljs-keyword">import</span> { initializeHermesForm } <span class="hljs-keyword">from</span> <span class="hljs-string">'hermes-wc/src/index.js'</span>
 
-    <pre class="language-javascript"><code>import 'hermes-wc/src/style.css';
-import { DiscordSubmissionAdapter } from 'hermes-wc/src/submission-adapters/discord.js'
-import { initializeHermesForm } from 'hermes-wc/src/index.js'
-
-const cleanup = initializeHermesForm({
-  submissionAdapters: [new DiscordSubmissionAdapter({
-    webhookUrl: 'your webhook url'
+<span class="hljs-keyword">const</span> cleanup = initializeHermesForm({
+  <span class="hljs-attr">submissionAdapters</span>: [<span class="hljs-keyword">new</span> DiscordSubmissionAdapter({
+    <span class="hljs-attr">webhookUrl</span>: <span class="hljs-string">'your webhook url'</span>
   })],
-  submissionCompleteCallback: (response) => { // handle the response }
+  <span class="hljs-attr">submissionCompleteCallback</span>: <span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> { <span class="hljs-comment">// handle the response }</span>
 })
 
-// When you can to clean up the event listeners
-cleanup()</code></pre>
-
-    <h2>What is the code doing?</h2>
-
-    <p>The `initializeHermesForm` function registers the web components to the page and sets up a bunch of event
-      listeners. It also returns a `cleanup` function that you can use to remove the event listeners when you no longer
+<span class="hljs-comment">// When you can to clean up the event listeners</span>
+cleanup()
+</code></pre>
+    <h2 id="what-is-the-code-doing-">What is the code doing?</h2>
+    <p>The initializeHermesForm function registers the web components to the page and sets up a bunch of event
+      listeners. It also returns a cleanup function that you can use to remove the event listeners when you no longer
       need them.</p>
-
-    <p>The `hermes-wrapper` component sets the open and close state of the form, as well as the positioning of the side
+    <p>The hermes-wrapper component sets the open and close state of the form, as well as the positioning of the side
       button. You can omit this component if you want an inline form.</p>
-
-    <p>The `form` element listens to and reacts to the form submission.</p>
+    <p>The form element listens to and reacts to the form submission.</p>
     <p>Because Hermes WC uses HTML to handle form submission, you can provide any valid HTML form control as a child of
-      the `form` element, and Hermes WC
-      will include its value when submitting the data.</p>
-
-    <p>To submit a form, use a `&lt;button type=&quot;submit&quot;&gt;&lt;/button&gt;` as a child of the form element.
-      Clicking it will trigger a form submission on click.</p>
-
-    <p>By default, Hermes WC uses some <a href="https://shoelace.style/">Shoelace</a> web components to build out the UI
-      of the form. These are
-      interoperable and accessible by default, so they will work regardless of which framework you use.</p>
-
-    <p>Hermes WC also exports a `hermes-score-input` which is a convenience wrapper over Shoelace's radio button
+      the form element, and Hermes WC will include its value when submitting the data.</p>
+    <p>To submit a form, use a <code>&lt;button type=&quot;submit&quot;&gt;&lt;/button&gt;</code> as a child of the form
+      element. Clicking it will trigger a form submission on click.</p>
+    <p>By default, Hermes WC uses some <a href="https://shoelace.style">Shoelace</a> web components to build out the UI
+      of the form. These are interoperable and accessible by default, so they will work regardless of which framework
+      you use.</p>
+    <p>Hermes WC also exports a hermes-score-input which is a convenience wrapper over Shoelace&#39;s radio button
       components.</p>
-
-    <h2>Gotchas</h2>
-    <h3>SSR</h3>
-    <p>
-      When invoked, the `initializeHermesForm` function performs some DOM operations. As a result, it cannot run in a
-      server-side rendered environment. If you are using a framework like Next.js, you can use the `useEffect` hook to
-      run the function on the client side. If you're using Svelte, you can call `initializeHermesForm` in the `onMount`
-      lifecycle hook.
+    <h2 id="notes">Notes</h2>
+    <h3 id="ssr">SSR</h3>
+    <p>When invoked, the <code>initializeHermesForm</code> function performs some DOM operations. As a result, it cannot
+      run in a server-side rendered environment. If you are using a framework like Next.js, you can use the
+      <code>useEffect</code> hook to run the function on the client side. If you&#39;re using Svelte, you can call
+      <code>initializeHermesForm</code> in the <code>onMount</code> lifecycle hook.
     </p>
-
-    <h2>API</h2>
-    <h3>Hermes Wrapper</h3>
-    <p>Handles the open/close state of the modal, as well as the position of the sticky open
-      button.</p>
-    <h4>Props</h4>
-    <p><span class="bold">label: </span>The label of the sticky open button.</p>
-
-    <h3>Hermes Score Input</h3>
+    <h3 id="security">Security</h3>
+    <p>Please note that the webhook URLs of the submission adapters are exposed to the client. Never pass through any
+      sensitive information as arguments.</p>
+    <p>If you&#39;d like to send data to a private endpoint, you can create a custom submission adapter that sends the
+      data to your endpoint. See the section on creating custom submission adapters for more information. You can then
+      use one of our adapters directly from within your private server to send to your preferred destination.</p>
+    <h2 id="api">API</h2>
+    <h3 id="hermes-wrapper">Hermes Wrapper</h3>
+    <p>Handles the open/close state of the modal, as well as the position of the sticky open button.</p>
+    <h4 id="props">Props</h4>
+    <p><strong>label:</strong> The label of the sticky open button.</p>
+    <h3 id="hermes-score-input">Hermes Score Input</h3>
     <p>Displays a radio group.</p>
-    <h4>Props</h4>
-    <p><span class="bold">score-count: </span>The number of buttons to display</p>
-    <p><span class="bold">start-helper-text: </span>The label to display on the left hand side of the input</p>
-    <p><span class="bold">end-helper-text: </span>The label to display on the right hand side of the input</p>
-    <p><span class="bold">name: </span>The name of the input, which is used in form submission</p>
-
-    <h3>initializeHermesForm</h3>
-    <p>Registers the web components and sets up the event listeners.</p>
-    <h4>Args</h4>
-    <p><span class="bold">submissionAdapters: </span>An array of submission adapters to use. See the submission
-      adapters section for more information.</p>
-    <p><span class="bold">submissionCompleteCallback: </span>A callback function that is called when the form submission
-      is complete. The callback is passed the response from the submission adapter.</p>
-    <h3>Submission Adapters</h3>
-    <p>Submission adapters are used to send the form data to a destination of your choice. We currently offer a Discord
-      submission adapter, but we'll be adding more in the future.</p>
-
-    <h4>Discord Submission Adapter</h4>
-    <p>Posts the form data to a Discord webhook.</p>
-    <h5>Args</h5>
-    <p><span class="bold">webhookUrl: </span>The URL of the Discord webhook to post to.</p>
-
-    <h4>Creating a custom submission adapter</h4>
-    <p>Submission adapters are just classes that implement the following interface:</p>
-    <pre class="language-javascript"><code>interface SubmissionAdapter {
-  submit: (formData) => Promise&lt;{success: boolean, error?: string}&gt;
-}</code></pre>
-
-
-    <h2>Styling your Hermes WC form</h2>
-    <p>Hermes WC offers a few CSS variables you can override to style the form. You can view them <a href="">here</a>
+    <h4 id="props">Props</h4>
+    <p><strong>score-count:</strong> The number of buttons to display
+      <strong>start-helper-text:</strong> The label to display on the left hand side of the input
+      <strong>end-helper-text:</strong> The label to display on the right hand side of the input
+      <strong>name:</strong> The name of the input, which is used in form submission
     </p>
-    <p>Hermes also applies styles using Shoelace's CSS variables and parts, which you can also override. You can view
-      the variables here <a href="https://github.com/shoelace-style/shoelace/blob/next/src/themes/light.css">here</a>.
+    <h3 id="initializehermesform">initializeHermesForm</h3>
+    <p>Registers the web components and sets up the event listeners.</p>
+    <h4 id="args">Args</h4>
+    <p><strong>submissionAdapters:</strong> An array of submission adapters to use. See the submission adapters section
+      for more information.
+      Submission adapters are used to send the form data to a destination of your choice. We currently offer a Discord
+      submission adapter, but we&#39;ll be adding more in the future.
+      <strong>submissionCompleteCallback:</strong> A callback function that is called when the form submission is
+      complete. The callback is passed the response from the submission adapter.
+    </p>
+    <h3 id="submission-adapters">Submission Adapters</h3>
+    <h4 id="discord-submission-adapter">Discord Submission Adapter</h4>
+    <p>Posts the form data to a Discord webhook.</p>
+    <h5 id="args">Args</h5>
+    <p><strong>webhookUrl:</strong> The URL of the Discord webhook to post to.</p>
+    <h4 id="slack-submission-adapter">Slack Submission Adapter</h4>
+    <p>Posts the form data to the Slack webhook.</p>
+    <h5 id="args">Args</h5>
+    <p><strong>webhookUrl:</strong> The URL of the Slack webhook to post to.</p>
+    <h4 id="http-get-submission-adapter">HTTP Get Submission Adapter</h4>
+    <p>Performs an HTTP GET request to the specified URL.</p>
+    <h5 id="args">Args</h5>
+    <p><strong>url:</strong> The URL of the HTTP endpoint.</p>
+    <h4 id="creating-a-custom-submission-adapter">Creating a custom submission adapter</h4>
+    <p>Submission adapters are just classes that implement the following interface:</p>
+    <pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">SubmissionAdapter</span> {</span>
+<span class="hljs-symbol">  submit:</span> (formData) =&gt; Promise&lt;{ <span class="hljs-string">success:</span> <span class="hljs-keyword">boolean</span>, error?: string }&gt;;
+}
+</code></pre>
+    <h2 id="styling-your-hermes-wc-form">Styling your Hermes WC form</h2>
+    <p>Hermes WC offers a few CSS variables you can override to style the form. You can view them <a
+        href="https://github.com/andrico1234/hermes-wc/blob/main/src/style.css">here</a>.</p>
+    <p>Hermes also applies styles using Shoelace&#39;s CSS variables and parts, which you can also override. You can
+      view
+      the variables <a href="https://github.com/shoelace-style/shoelace/blob/next/src/themes/light.css">here</a>.
       The Shoelace documentation also describes how to customise Shoelace components using parts.</p>
 
     <hermes-wrapper>

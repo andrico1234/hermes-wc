@@ -1,0 +1,18 @@
+/**
+ * SlackSubmissionAdapter
+ *
+ * @class SlackSubmissionAdapter
+ * @extends {SubmissionAdapter}
+ */
+export class SlackSubmissionAdapter extends SubmissionAdapter {
+    /**
+     *
+     * @param {object} params
+     * @param {string} params.webhookUrl
+     */
+    constructor(params: {
+        webhookUrl: string;
+    });
+    webhookUrl: string;
+}
+import { SubmissionAdapter } from "./base.js";
