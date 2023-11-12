@@ -132,7 +132,7 @@ Submission adapters are just classes that implement the following interface:
 
 ```js
 interface SubmissionAdapter {
-  submit: (formData) => Promise<void>;
+  submit: (formData) => Promise<{success: boolean, error?: string}>;
 }
 ```
 
