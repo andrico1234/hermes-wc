@@ -79,6 +79,12 @@ By default, Hermes WC uses some [Shoelace](https://shoelace.style) web component
 
 Hermes WC also exports a hermes-score-input which is a convenience wrapper over Shoelace's radio button components.
 
+## Gotchas
+
+### SSR
+
+When invoked, the `initializeHermesForm` function performs some DOM operations. As a result, it cannot run in a server-side rendered environment. If you are using a framework like Next.js, you can use the `useEffect` hook to run the function on the client side. If you're using Svelte, you can call `initializeHermesForm` in the `onMount` lifecycle hook.
+
 ## API
 
 ### Hermes Wrapper

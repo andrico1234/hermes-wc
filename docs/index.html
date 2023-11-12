@@ -117,6 +117,15 @@ cleanup()</code></pre>
     <p>Hermes WC also exports a `hermes-score-input` which is a convenience wrapper over Shoelace's radio button
       components.</p>
 
+    <h2>Gotchas</h2>
+    <h3>SSR</h3>
+    <p>
+      When invoked, the `initializeHermesForm` function performs some DOM operations. As a result, it cannot run in a
+      server-side rendered environment. If you are using a framework like Next.js, you can use the `useEffect` hook to
+      run the function on the client side. If you're using Svelte, you can call `initializeHermesForm` in the `onMount`
+      lifecycle hook.
+    </p>
+
     <h2>API</h2>
     <h3>Hermes Wrapper</h3>
     <p>Handles the open/close state of the modal, as well as the position of the sticky open
@@ -137,7 +146,8 @@ cleanup()</code></pre>
     <h4>Args</h4>
     <p><span class="bold">submissionAdapters: </span>An array of submission adapters to use. See the submission
       adapters section for more information.</p>
-    <p><span class="bold">submissionCompleteCallback: </span>A callback function that is called when the form submission is complete. The callback is passed the response from the submission adapter.</p>
+    <p><span class="bold">submissionCompleteCallback: </span>A callback function that is called when the form submission
+      is complete. The callback is passed the response from the submission adapter.</p>
     <h3>Submission Adapters</h3>
     <p>Submission adapters are used to send the form data to a destination of your choice. We currently offer a Discord
       submission adapter, but we'll be adding more in the future.</p>
@@ -192,5 +202,3 @@ cleanup()</code></pre>
 </body>
 
 </html>
-
-<!-- Think about how people can handle this without writing web components outside of the wrapper component -->
