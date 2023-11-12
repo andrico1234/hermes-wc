@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite ./docs",
-    "build-docs": "vite build ./docs",
+    "build-docs": "vite build ./docs --watch false",
     "preview-docs": "npm run build-docs && vite preview ./docs",
     "test": "echo \"no tests\"",
     "delete-types": "rimraf **/*.ts src/**/*.ts",
