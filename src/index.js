@@ -1,9 +1,11 @@
-import '@shoelace-style/shoelace/dist/themes/light.css';
-import '@shoelace-style/shoelace/dist/components/input/input.js'
-import '@shoelace-style/shoelace/dist/components/button/button.js'
+import { isSSR } from './utilities/isSSR.js';
 
 import '../src/wrapper/hermes-wrapper.js';
 import '../src/score-input/hermes-score-input.js';
+
+if (isSSR) {
+  console.warn("You're importing Hermes WC in a server-side rendered environment. Ensure that you run `initializeHermesForm` in a browser environment.")
+}
 
 /**
  * @callback SubmissionCompleteCallback
@@ -30,6 +32,9 @@ const dispatchCloseEvent = (e) => {
  * @returns {() => void}
  */
 export function initializeHermesForm(params) {
+  import('@shoelace-style/shoelace/dist/components/input/input.js');
+  import('@shoelace-style/shoelace/dist/components/button/button.js');
+
   displayHermesElements()
 
   const { submissionAdapters = [], submissionCompleteCallback = () => null } = params
