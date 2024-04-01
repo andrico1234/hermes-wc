@@ -104,6 +104,8 @@ const handleSubmit = (adapters) => (e) => {
 
     document.dispatchEvent(event)
   })
+
+  e.target.reset();
 }
 
 /**
